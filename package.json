@@ -4,7 +4,7 @@
     "description": "API wrapper for GIFBox",
     "main": "dist/index.js",
     "scripts": {
-        "test": "ava",
+        "test": "npm run build && ava",
         "lint": "eslint src/**/*.ts",
         "build": "tsc -p tsconfig.json --pretty",
         "dev": "tsc -p tsconfig.json --pretty --watch",
