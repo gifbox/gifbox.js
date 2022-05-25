@@ -23,7 +23,7 @@ export class ClientAxios {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    post<T = any, R = AxiosResponse<T>>(path: string, data?: T, config?: AxiosRequestConfig) {
+    post<T = any, R = AxiosResponse<T>>(path: string, data?: any, config?: AxiosRequestConfig) {
         return this.axios.post<T, R>(path, data, config)
     }
 }
