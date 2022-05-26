@@ -3,6 +3,8 @@ import { UserSelfResponse, SessionCreateResponse, GenericSuccess, SessionListRes
 import { FileInformation } from "types/Structures.js"
 import { ClientAxios } from "./Axios.js"
 import { ClientUser } from "./ClientUser.js"
+import { PostFunctions } from "./PostFunctions.js"
+import { UserFunctions } from "./UserFunctions.js"
 
 export class Client {
     #bearerToken: string | null = null
@@ -32,8 +34,16 @@ export class Client {
         )
     }
 
-    get user() {
+    get clientUser() {
         return this.#clientUser
+    }
+
+    get user(): UserFunctions {
+        return UserFunctions.instantiate(this.#axios)
+    }
+
+    get post(): PostFunctions {
+        return PostFunctions.instantiate(this.#axios)
     }
 
     async loginBearer(token: string) {

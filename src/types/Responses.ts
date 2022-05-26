@@ -1,3 +1,5 @@
+import { FileInformation } from "./Structures"
+
 export type GenericSuccess = {
     success: true
 }
@@ -24,3 +26,82 @@ export type SessionCurrentResponse = {
 }
 
 export type SessionListResponse = Omit<SessionCurrentResponse, "token" | "userId">[]
+
+export type UserRegisterResponse = {
+    _id: string,
+    displayName: string,
+    username: string,
+    email: string,
+    description: string,
+    avatar: null
+}
+
+export type UserQueryResponse = {
+    _id: string,
+    displayName: string,
+    username: string,
+    description: string,
+    verified: boolean,
+    avatar: FileInformation | null
+}
+
+export type PostNewResponse = {
+    _id: string,
+    title: string,
+    slug: string,
+    author: {
+        _id: string,
+        displayName: string,
+        username: string,
+        description: string,
+        verified: boolean,
+        avatar: FileInformation | null
+    },
+    tags: string[],
+    file: FileInformation,
+    private: boolean,
+    favorites: number,
+    favorited?: boolean
+}
+
+export type PostPopularORSearchResponse = {
+    _id: string,
+    title: string,
+    slug: string,
+    author: {
+        _id: string,
+        displayName: string,
+        username: string,
+        description: string,
+        verified: boolean,
+        avatar: FileInformation | null
+    },
+    tags: string[],
+    file: {
+        fileName: string,
+        size: number
+    },
+    favorites: number,
+    favorited: boolean
+}[]
+
+export type PostInfoResponse = {
+    _id: string,
+    title: string,
+    slug: string,
+    author: {
+        _id: string,
+        displayName: string,
+        username: string,
+        description: string,
+        verified: boolean,
+        avatar: FileInformation | null
+    },
+    tags: string[],
+    file: {
+        fileName: string,
+        size: number
+    },
+    favorites: number,
+    favorited: boolean
+}

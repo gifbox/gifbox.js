@@ -1,4 +1,4 @@
-import { FileInformation } from "types/Structures"
+import { FileInformation } from "types/Structures.js"
 
 export class User {
     #avatar: FileInformation | null
