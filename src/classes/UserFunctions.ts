@@ -1,4 +1,4 @@
-import { UserQueryResponse, UserRegisterResponse } from "types/Responses.js"
+import { UserQueryResponse, UserRegisterResponse } from "../types/Responses.js"
 import { ClientAxios } from "./Axios.js"
 import { User } from "./User.js"
 

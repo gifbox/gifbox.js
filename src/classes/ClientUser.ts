@@ -1,4 +1,4 @@
-import { FileInformation } from "types/Structures.js"
+import { FileInformation } from "../types/Structures.js"
 import { User } from "./User.js"
 
 export class ClientUser extends User {

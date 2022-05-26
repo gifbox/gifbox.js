@@ -1,5 +1,5 @@
-import { createFormData } from "lib/FormData.js"
-import { GenericSuccess, PostInfoResponse, PostNewResponse, PostPopularORSearchResponse, } from "types/Responses.js"
+import { createFormData } from "../lib/FormData.js"
+import { GenericSuccess, PostInfoResponse, PostNewResponse, PostPopularORSearchResponse, } from "../types/Responses.js"
 import { ClientAxios } from "./Axios.js"
 
 export class PostFunctions {
