@@ -1,6 +1,9 @@
 import { FileInformation } from "../types/Structures.js"
 import { User } from "./User.js"
 
+/**
+ * Extends a regular {@link User}, but email is available.
+ */
 export class ClientUser extends User {
     #email: string
 
@@ -16,6 +19,7 @@ export class ClientUser extends User {
         this.#email = email
     }
 
+    /** E-mail address of the authorized user */
     get email() {
         return this.#email
     }
