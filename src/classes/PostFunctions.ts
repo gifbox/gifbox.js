@@ -1,5 +1,5 @@
 import { createFormData } from "../lib/FormData.js"
-import { GenericSuccess, PostInfoResponse, PostNewResponse, PostPopularORSearchResponse, } from "../types/Responses.js"
+import { GenericSuccess, PostInfoResponse, PostNewResponse, PostPopularResponse, PostSearchResponse, } from "../types/Responses.js"
 import { ClientAxios } from "./Axios.js"
 
 /**
@@ -49,7 +49,7 @@ export class PostFunctions {
     async popularPosts(limit: number, skip: number) {
         const {
             data
-        } = await this.#axios.get<PostPopularORSearchResponse>(`/post/popular?limit=${limit ?? 10}&skip=${skip ?? 0}`)
+        } = await this.#axios.get<PostPopularResponse>(`/post/popular?limit=${limit ?? 10}&skip=${skip ?? 0}`)
         return data
     }
 
@@ -64,9 +64,8 @@ export class PostFunctions {
      * @param limit Limit, up to 50
      */
     async searchPosts(query: string, limit: number, skip: number) {
-        const { data } = await this.#axios.post<PostPopularORSearchResponse>("/post/search", {
-            query, skip, limit
-        })
+        const encodedQuery = encodeURIComponent(query)
+        const { data } = await this.#axios.get<PostSearchResponse>(`/post/search?query=${encodedQuery}&limit=${limit}&skip=${skip}`)
         return data
     }
 }

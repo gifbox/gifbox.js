@@ -61,10 +61,11 @@ export type PostNewResponse = {
     file: FileInformation,
     private: boolean,
     favorites: number,
-    favorited?: boolean
+    favorited?: boolean,
+    createdAt: number
 }
 
-export type PostPopularORSearchResponse = {
+export type PostPopularResponse = {
     _id: string,
     title: string,
     slug: string,
@@ -82,8 +83,33 @@ export type PostPopularORSearchResponse = {
         size: number
     },
     favorites: number,
-    favorited: boolean
+    favorited: boolean,
+    createdAt: number
 }[]
+
+export type PostSearchResponse = {
+    hits: {
+        _id: string,
+        title: string,
+        slug: string,
+        author: {
+            _id: string,
+            displayName: string,
+            username: string,
+            description: string,
+            verified: boolean,
+            avatar: FileInformation | null
+        },
+        tags: string[],
+        file: FileInformation,
+        favorites: number,
+        favorited: boolean,
+        createdAt: number
+    }[],
+    tookMs: number,
+    numHits: number,
+    numHitsApprox: boolean
+}
 
 export type PostInfoResponse = {
     _id: string,
@@ -103,5 +129,6 @@ export type PostInfoResponse = {
         size: number
     },
     favorites: number,
-    favorited: boolean
+    favorited: boolean,
+    createdAt: number
 }

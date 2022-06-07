@@ -10,9 +10,7 @@
         "dev": "tsc -p tsconfig.json --pretty --watch",
         "docs": "typedoc --readme README.md src/",
         "prepublishOnly": "npm run build",
-        "postpublish": "npm run build",
         "preversion": "npm run build",
-        "version": "npm run build",
         "postversion": "npm publish"
     },
     "repository": {

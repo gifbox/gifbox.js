@@ -1,3 +1,4 @@
+import { SelfUpdateObject, SessionUpdateObject } from "types/Requests"
 import { ClientOptions } from "../index"
 import { UserSelfResponse, SessionCreateResponse, GenericSuccess, SessionListResponse, SessionCurrentResponse } from "../types/Responses.js"
 import { FileInformation } from "../types/Structures.js"
@@ -98,8 +99,23 @@ export class Client {
 
     /** Delete an existing session. */
     async deleteSession(sessionId: string) {
-        await this.#axios.post<GenericSuccess>("/session/logout", {
-            session: sessionId
-        })
+        await this.#axios.delete<GenericSuccess>(`/session/${sessionId}`)
+    }
+
+    /** 
+     * Modify an existing session.
+     * @param overwriteWith Object with updated properties, all keys optional
+     */
+    async modifySession(sessionId: string, overwriteWith: SessionUpdateObject) {
+        await this.#axios.patch<GenericSuccess>(`/session/${sessionId}`, overwriteWith)
+    }
+
+    /**
+     * Modify the currently logged in user
+     * @param overwriteWith Object with updated properties, all keys optional
+     */
+    async modifySelf(overwriteWith: SelfUpdateObject) {
+        await this.#axios.patch<UserSelfResponse>("/user/self", overwriteWith)
+        await this.#updateClientUser()
     }
 }
