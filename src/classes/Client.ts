@@ -1,4 +1,4 @@
-import { SelfUpdateObject, SessionUpdateObject } from "types/Requests"
+import { SelfUpdateObject, SessionUpdateObject } from "../types/Requests"
 import { ClientOptions } from "../index"
 import { UserSelfResponse, SessionCreateResponse, GenericSuccess, SessionListResponse, SessionCurrentResponse } from "../types/Responses.js"
 import { FileInformation } from "../types/Structures.js"
