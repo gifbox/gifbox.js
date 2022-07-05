@@ -27,6 +27,10 @@ export class User {
         return this.#avatar
     }
 
+    protected updateAvatar(val: FileInformation | null) {
+        this.#avatar = val
+    }
+
     /** Display name of the user. May be any Unicode sequence up to 50 characters total. */
     get displayName() {
         return this.#displayName

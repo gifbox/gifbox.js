@@ -34,3 +34,17 @@ export type FileInformation = {
     /** SHA-512 hash of the file. */
     sha512: string
 }
+
+/**
+ * Stores a favorited URL object.
+ */
+export type FavoriteURL = {
+    /** Favorite ID. */
+    _id: string,
+    /** URL of the favorite, usually an image. */
+    url: string,
+    /** ID of the favorite's author. */
+    author: string,
+    /** Unix timestamp of when the item was favorited. */
+    favoritedAt: string,
+}

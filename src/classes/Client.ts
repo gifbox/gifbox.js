@@ -1,11 +1,12 @@
-import { SelfUpdateObject, SessionUpdateObject } from "../types/Requests"
-import { ClientOptions } from "../index"
+import { SelfUpdateObject, SessionUpdateObject } from "../types/Requests.js"
+import { ClientOptions } from "../index.js"
 import { UserSelfResponse, SessionCreateResponse, GenericSuccess, SessionListResponse, SessionCurrentResponse } from "../types/Responses.js"
 import { FileInformation } from "../types/Structures.js"
 import { ClientAxios } from "./Axios.js"
 import { ClientUser } from "./ClientUser.js"
 import { PostFunctions } from "./PostFunctions.js"
 import { UserFunctions } from "./UserFunctions.js"
+import { createFormData } from "lib/FormData.js"
 
 /**
  * GIFBox API Client
@@ -117,5 +118,25 @@ export class Client {
     async modifySelf(overwriteWith: SelfUpdateObject) {
         await this.#axios.patch<UserSelfResponse>("/user/self", overwriteWith)
         await this.#updateClientUser()
+    }
+
+    /** Set a new avatar. `avatar` should be a common-format image that {@link FormData} understands. */
+    async setAvatar(avatar: never) {
+        const formData = await createFormData()
+        formData.append("file", avatar)
+
+        const { data } = await this.#axios.post<GenericSuccess>("/user/avatar", formData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        return data
+    }
+
+    /** Unset the current avatar. */
+    async unsetAvatar() {
+        const { data } = await this.#axios.delete<GenericSuccess>("/user/avatar")
+        return data
     }
 }

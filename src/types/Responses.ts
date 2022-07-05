@@ -1,4 +1,4 @@
-import { FileInformation } from "./Structures"
+import { FavoriteURL, FileInformation } from "./Structures.js"
 
 export type GenericSuccess = {
     success: true
@@ -45,6 +45,8 @@ export type UserQueryResponse = {
     avatar: FileInformation | null
 }
 
+export type UserFavoritesResponse = FavoriteURL[]
+
 export type PostNewResponse = {
     _id: string,
     title: string,
@@ -60,8 +62,6 @@ export type PostNewResponse = {
     tags: string[],
     file: FileInformation,
     private: boolean,
-    favorites: number,
-    favorited?: boolean,
     createdAt: number
 }
 
@@ -82,8 +82,6 @@ export type PostPopularResponse = {
         fileName: string,
         size: number
     },
-    favorites: number,
-    favorited: boolean,
     createdAt: number
 }[]
 
@@ -102,8 +100,6 @@ export type PostSearchResponse = {
         },
         tags: string[],
         file: FileInformation,
-        favorites: number,
-        favorited: boolean,
         createdAt: number
     }[],
     tookMs: number,
@@ -128,7 +124,5 @@ export type PostInfoResponse = {
         fileName: string,
         size: number
     },
-    favorites: number,
-    favorited: boolean,
     createdAt: number
 }

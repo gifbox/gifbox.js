@@ -1,4 +1,5 @@
-import { UserQueryResponse, UserRegisterResponse } from "../types/Responses.js"
+import { FavoriteURL } from "types/Structures.js"
+import { GenericSuccess, UserFavoritesResponse, UserQueryResponse, UserRegisterResponse } from "../types/Responses.js"
 import { ClientAxios } from "./Axios.js"
 import { User } from "./User.js"
 
@@ -32,6 +33,26 @@ export class UserFunctions {
     /** Get information about a user given their username. */
     async query(username: string): Promise<UserQueryResponse> {
         const { data } = await this.#axios.get<UserQueryResponse>(`/user/${username}`)
+        return data
+    }
+
+    /** Get current user's favorite URLs. */
+    async favorites(): Promise<UserFavoritesResponse> {
+        const { data } = await this.#axios.get<UserFavoritesResponse>("/user/favorites")
+        return data
+    }
+
+    /** Add to current user's favorite URLs. */
+    async favorite(url: string): Promise<FavoriteURL> {
+        const { data } = await this.#axios.post<FavoriteURL>("/user/favorites", {
+            url
+        })
+        return data
+    }
+
+    /** Delete from current user's favorite URLs */
+    async unfavorite(favoriteId: string): Promise<GenericSuccess> {
+        const { data } = await this.#axios.delete<GenericSuccess>(`/user/favorites/${favoriteId}`)
         return data
     }
 }

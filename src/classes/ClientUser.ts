@@ -23,4 +23,9 @@ export class ClientUser extends User {
     get email() {
         return this.#email
     }
+
+    /** Set the avatar of the currently logged-in user */
+    set avatar(val: FileInformation | null) {
+        this.updateAvatar(val)
+    }
 }
