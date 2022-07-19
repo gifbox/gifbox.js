@@ -6,7 +6,7 @@ import { ClientAxios } from "./Axios.js"
 import { ClientUser } from "./ClientUser.js"
 import { PostFunctions } from "./PostFunctions.js"
 import { UserFunctions } from "./UserFunctions.js"
-import { createFormData } from "lib/FormData.js"
+import { createFormData } from "../lib/FormData.js"
 
 /**
  * GIFBox API Client

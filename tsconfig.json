@@ -18,13 +18,6 @@
         "lib": [
             "es6",
             "dom"
-        ],
-        "baseUrl": "./src",
-        "paths": {
-            "*": [
-                "*",
-                "node_modules/*"
-            ]
-        }
+        ]
     }
 }
