@@ -18,8 +18,9 @@ export class PostFunctions {
         return new PostFunctions(axios)
     }
 
-    /** Create a new post. gifData should be an animated image in gif format that {@link FormData} understands. */
-    async createPost(title: string, tags: string[], gifData: never) {
+    /** Create a new post. `gifData` should be an animated image in gif format that {@link FormData} understands. */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async createPost(title: string, tags: string[], gifData: any) {
         const formData = await createFormData()
         formData.append("title", title)
         for (const tag of tags) {

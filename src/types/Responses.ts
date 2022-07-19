@@ -65,7 +65,7 @@ export type PostNewResponse = {
     createdAt: number
 }
 
-export type PostPopularResponse = {
+export type PostInPopular = {
     _id: string,
     title: string,
     slug: string,
@@ -82,26 +82,32 @@ export type PostPopularResponse = {
         fileName: string,
         size: number
     },
-    createdAt: number
-}[]
+    createdAt: number,
+    views: number
+}
+
+export type PostPopularResponse = PostInPopular[]
+
+export type PostInSearch = {
+    _id: string,
+    title: string,
+    slug: string,
+    author: {
+        _id: string,
+        displayName: string,
+        username: string,
+        description: string,
+        verified: boolean,
+        avatar: FileInformation | null
+    },
+    tags: string[],
+    file: FileInformation,
+    createdAt: number,
+    views: number
+}
 
 export type PostSearchResponse = {
-    hits: {
-        _id: string,
-        title: string,
-        slug: string,
-        author: {
-            _id: string,
-            displayName: string,
-            username: string,
-            description: string,
-            verified: boolean,
-            avatar: FileInformation | null
-        },
-        tags: string[],
-        file: FileInformation,
-        createdAt: number
-    }[],
+    hits: PostInSearch[],
     tookMs: number,
     numHits: number,
     numHitsApprox: boolean
@@ -124,5 +130,6 @@ export type PostInfoResponse = {
         fileName: string,
         size: number
     },
-    createdAt: number
+    createdAt: number,
+    views: number
 }

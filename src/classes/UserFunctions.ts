@@ -1,4 +1,4 @@
-import { FavoriteURL } from "types/Structures.js"
+import { FavoriteURL } from "../types/Structures.js"
 import { GenericSuccess, UserFavoritesResponse, UserQueryResponse, UserRegisterResponse } from "../types/Responses.js"
 import { ClientAxios } from "./Axios.js"
 import { User } from "./User.js"

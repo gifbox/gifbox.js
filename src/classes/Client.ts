@@ -121,7 +121,8 @@ export class Client {
     }
 
     /** Set a new avatar. `avatar` should be a common-format image that {@link FormData} understands. */
-    async setAvatar(avatar: never) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async setAvatar(avatar: any) {
         const formData = await createFormData()
         formData.append("file", avatar)
 
