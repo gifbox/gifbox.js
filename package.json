@@ -1,6 +1,6 @@
 {
     "name": "gifbox.js",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "description": "API wrapper for GIFBox",
     "main": "dist/index.js",
     "scripts": {
