@@ -31,6 +31,10 @@ export class User {
         this.#avatar = val
     }
 
+    protected currentAvatar() {
+        return this.#avatar
+    }
+
     /** Display name of the user. May be any Unicode sequence up to 50 characters total. */
     get displayName() {
         return this.#displayName

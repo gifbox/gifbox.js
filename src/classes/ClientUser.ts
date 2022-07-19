@@ -28,4 +28,9 @@ export class ClientUser extends User {
     set avatar(val: FileInformation | null) {
         this.updateAvatar(val)
     }
+
+    /** Get the avatar of the currently logged-in user */
+    get avatar() {
+        return this.currentAvatar()
+    }
 }

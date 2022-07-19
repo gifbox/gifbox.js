@@ -56,7 +56,19 @@ test("search", async t => {
     await client.loginBearer(token)
 
     const hits = await client.post.searchPosts("rot", 10, 0)
-    console.log("Took", hits.tookMs, "ms,", hits.numHitsApprox ? "Approximately" : "Exactly", hits.numHits, "hits:", hits.hits)
+
+    t.log("Took", hits.tookMs, "ms,", hits.numHitsApprox ? "Approximately" : "Exactly", hits.numHits, "hits:", hits.hits)
 
     t.true(true)
+})
+
+test("get/set client user avatar", async t => {
+    const client = new Client({
+        baseURL
+    })
+    await client.loginBearer(token)
+
+    t.log(client.clientUser.avatar)
+
+    t.truthy(client.clientUser.avatar)
 })
