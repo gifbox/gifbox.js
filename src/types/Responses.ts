@@ -109,8 +109,7 @@ export type PostInSearch = {
 export type PostSearchResponse = {
     hits: PostInSearch[],
     tookMs: number,
-    numHits: number,
-    numHitsApprox: boolean
+    numHits: number
 }
 
 export type PostInfoResponse = {
